@@ -38,8 +38,7 @@ main_loop1:
 	lw	$a0, 0($s2) #the value of the array
 	lw	$a1, 0($s3) #the length of the array
 	lw	$a1, 0($a1)
-	
-	#here 
+
 	jal	quicksort
 
 	# test the array and set flag

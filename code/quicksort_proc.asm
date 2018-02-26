@@ -2,14 +2,13 @@
 #-------------------------------------------
 # Procedure: quicksort
 # Argument: 
-#   $a0: Base address of the array
+#   	$a0: Base address of the array
 #       $a1: Number of array element - length
-# Return:
-#       None
 # Notes: Implement quicksort, base array 
 #        at $a0 will be sorted after the routine
-#    is done.
+#    	 is done.
 #-------------------------------------------
+
 quicksort:
 # Caller RTE store 
 #registers: a0, a1, a2, a3; s3, s4
@@ -23,7 +22,8 @@ quicksort:
     sw  $s4, 12($sp)
     sw  $s3, 8($sp)
     addi    $fp, $sp, 36
-# Implement quicksort 
+
+
     #parameters a0 = base address; a2 = low; a3 = high 
     addi $a3, $a1, -1   #last element of the array -> high
     li $a2, 0       #set first index to 0      -> low
@@ -31,12 +31,12 @@ quicksort:
 sort: 
     bge $a2, $a3, done  # if(low < high) 
     jal partition       # int pi = partition(arr, low, high)
-                # pi will be stored in $s4
+                	# pi will be stored in $s4
     
     #sort before partition -- sort(arr, low, pi-1)
     move $s3, $a3       #store old high value in $s3
     addi $a3, $s4, -1   # high (a3) = pi - 1
-    jal sort        #recursive call
+    jal sort       	#recursive call
     
     #sort after partition -- sort(arr, pi+1, high)
     move $a3, $s3       #put the original high value back 
@@ -106,8 +106,7 @@ end_for:
     
 done:
     # Caller RTE restore (TBD)
-   #registers: a0, a1, a2, a3; s3, s4
-    #addi    $sp, $sp, 32
+    #registers: a0, a1, a2, a3; s3, s4
     lw  $fp, 36($sp)
     lw  $ra, 32($sp)
     lw  $a0, 28($sp)
