@@ -13,16 +13,16 @@
 quicksort:
 # Caller RTE store 
 #registers: a0, a1, a2, a3; s3, s4
-    addi    $sp, $sp, -32
-    sw  $fp, 32($sp)
-    sw  $ra, 28($sp)
-    sw  $a0, 24($sp)
-    sw  $a1, 20($sp)
-    sw  $a2, 16($sp)
-    sw  $a3, 12($sp)
-    sw  $s4, 8($sp)
-    sw  $s3, 4($sp)
-    addi    $fp, $sp, 32
+    addi    $sp, $sp, -36
+    sw  $fp, 36($sp)
+    sw  $ra, 32($sp)
+    sw  $a0, 28($sp)
+    sw  $a1, 24($sp)
+    sw  $a2, 20($sp)
+    sw  $a3, 16($sp)
+    sw  $s4, 12($sp)
+    sw  $s3, 8($sp)
+    addi    $fp, $sp, 36
 # Implement quicksort 
     #parameters a0 = base address; a2 = low; a3 = high 
     addi $a3, $a1, -1   #last element of the array -> high
@@ -108,14 +108,14 @@ done:
     # Caller RTE restore (TBD)
    #registers: a0, a1, a2, a3; s3, s4
     #addi    $sp, $sp, 32
-    lw  $fp, 32($sp)
-    lw  $ra, 28($sp)
-    lw  $a0, 24($sp)
-    lw  $a1, 20($sp)
-    lw  $a2, 16($sp)
-    lw  $a3, 12($sp)
-    lw  $s4, 8($sp)
-    lw  $s3, 4($sp)
-    addi    $fp, $sp, 32
+    lw  $fp, 36($sp)
+    lw  $ra, 32($sp)
+    lw  $a0, 28($sp)
+    lw  $a1, 24($sp)
+    lw  $a2, 20($sp)
+    lw  $a3, 16($sp)
+    lw  $s4, 12($sp)
+    lw  $s3, 8($sp)
+    addi    $fp, $sp, 36
      # Return to Caller
     jr  $ra
